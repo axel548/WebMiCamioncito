@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Client";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Clients</h1>
+
+<div class="card">
+    <div class="card-header">
+        List Clients
+    </div>
+    <div class="card-body">
+        <a asp-action="FormClient" asp-controller="Home" asp-route-idClient="0" class="btn btn-success btn-sm">New Client</a>
+        <hr />
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Cargo Percentage</th>
+                    <th>Reception Address</th>
+                    <th>Delivery Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.IDClient</td>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.CargoPercentage</td>
+                        <td>@item.ReceptionAddress</td>
+                        <td>@item.DeliveryAddress</td>
+                        <td>
+                            <a asp-action="FormClient" asp-controller="Home" asp-route-idClient="@item.IDClient" class="btn btn-primary btn-sm">Edit</a>
+                            <a asp-action="DeleteClient" asp-controller="Home" asp-route-idClient="@item.IDClient" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,72 @@
+﻿@using MiCamioncito.Models
+@model ValueTuple<List<Pilot>, List<Vehicle>>
+@{
+    ViewData["Title"] = "Reportery Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Report Data</h1>
+
+    <h3>Pilots Availables:</h3>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Available Time</th>
+                <th scope="col">Availability Start Date</th>
+                <th scope="col">Availability End Date</th>
+                <th scope="col">Per Diem</th>
+                <th scope="col">Additional Expenses</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pilot in Model.Item1)
+            {
+                <tr>
+                    <th scope="row">@pilot.idPilot</th>
+                    <td>@pilot.Name</td>
+                    <td>@pilot.AvailableTime</td>
+                    <td>@DateTime.Parse(pilot.AvailabilityStartDate).ToString("dd-MM-yyyy")</td>
+                    <td>@DateTime.Parse(pilot.AvailabilityEndDate).ToString("dd-MM-yyyy")</td>
+                    <td>@pilot.PerDiem</td>
+                    <td>@pilot.AdditionalExpenses</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Vehicles Availables:</h3>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Capacity Cubic Meters</th>
+                <th scope="col">Fuel Consumption PerKm</th>
+                <th scope="col">Available Distance Km</th>
+                <th scope="col">Availability Start Date</th>
+                <th scope="col">Availability End Date</th>
+                <th scope="col">Depreciation Cost Per Km</th>
+                <th scope="col">Cargo Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model.Item2)
+            {
+                <tr>
+                <th scope="row">@vehicle.IDVehicle</th>
+                    <td>@vehicle.CapacityCubicMeters</td>
+                    <td>@vehicle.FuelConsumptionPerKm</td>
+                    <td>@vehicle.AvailableDistanceKm</td>
+                    <td>@DateTime.Parse(vehicle.AvailabilityStartDate).ToString("dd-MM-yyyy")</td>
+                    <td>@DateTime.Parse(vehicle.AvailabilityEndDate).ToString("dd-MM-yyyy")</td>
+                    <td>@vehicle.DepreciationCostPerKm</td>
+                    <td>@vehicle.CargoType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<a asp-action="Reportery" asp-controller="Home" class="btn btn-warning btn-sm">Volver a lista</a>

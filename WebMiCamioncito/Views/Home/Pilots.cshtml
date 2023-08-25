@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Pilot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pilots</h1>
+
+<div class="card">
+    <div class="card-header">
+        List Pilots
+    </div>
+    <div class="card-body">
+        <a asp-action="FormPilot" asp-controller="Home" asp-route-idPilot="0" class="btn btn-success btn-sm">New Pilot</a>
+        <hr />
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th>Name</th>
+                    <th>Available Time</th>
+                    <th>Availability Start Date</th>
+                    <th>Availability End Date</th>
+                    <th>Per Diem</th>
+                    <th>Additional Expenses</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.idPilot</td>
+                        <td>@item.Name</td>
+                        <td>@item.AvailableTime</td>
+                        <td>@DateTime.Parse(item.AvailabilityStartDate).ToString("dd-MM-yyyy")</td>
+                        <td>@DateTime.Parse(item.AvailabilityEndDate).ToString("dd-MM-yyyy")</td>
+                        <td>@item.PerDiem</td>
+                        <td>@item.AdditionalExpenses</td>
+                        <td>
+                            <a asp-action="FormPilot" asp-controller="Home" asp-route-idPilot="@item.idPilot" class="btn btn-primary btn-sm">Edit</a>
+                            <a asp-action="DeletePilot" asp-controller="Home" asp-route-idPilot="@item.idPilot" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

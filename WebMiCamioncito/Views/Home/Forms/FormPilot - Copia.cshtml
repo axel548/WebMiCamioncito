@@ -1,0 +1,50 @@
+﻿@using MiCamioncito.Models
+@model Pilot
+
+@{
+    ViewData["Title"] = "Form Pilot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        @ViewBag.Accion
+    </div>
+    <div class="card-body">
+
+        <form asp-action="SavePilot" asp-controller="Home" method="post">
+
+            <input type="hidden" asp-for="idPilot" />
+
+            <div class="mb-2">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Name" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Available Time</label>
+                <input type="text" class="form-control form-control-sm" asp-for="AvailableTime" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Availability Start Date</label>
+                <input type="date" class="form-control form-control-sm" asp-for="AvailabilityStartDate" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Availability End Date</label>
+                <input type="date" class="form-control form-control-sm" asp-for="AvailabilityEndDate" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Per Diem</label>
+                <input type="text" class="form-control form-control-sm" asp-for="PerDiem" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Additional Expenses</label>
+                <input type="text" class="form-control form-control-sm" asp-for="AdditionalExpenses" />
+            </div>
+
+            <button type="submit" class="btn btn-success btn-sm">Save</button>
+            <a asp-action="Pilots" asp-controller="Home" class="btn btn-warning btn-sm">Volver a lista</a>
+        </form>
+
+    </div>
+
+</div>

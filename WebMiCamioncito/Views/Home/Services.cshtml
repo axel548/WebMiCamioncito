@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Services</h1>
+
+<div class="card">
+    <div class="card-header">
+        List Services
+    </div>
+    <div class="card-body">
+        <a asp-action="FormService" asp-controller="Home" asp-route-idService="0" class="btn btn-success btn-sm">New Service</a>
+        <hr />
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID Service</th>
+                    <th>ID Vehicle</th>
+                    <th>ID Pilot</th>
+                    <th>ID Client</th>
+                    <th>Service Date</th>
+                    <th>Delivery Date</th>
+                    <th>Total Cost</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.IDService</td>
+                        <td>@item.IDVehicle</td>
+                        <td>@item.IDPilot</td>
+                        <td>@item.IDClient</td>
+                        <td>@DateTime.Parse(item.ServiceDate).ToString("dd-MM-yyyy")</td>
+                        <td>@DateTime.Parse(item.DeliveryDate).ToString("dd-MM-yyyy")</td>
+                        <td>@item.TotalCost</td>
+                        <td>
+                            <a asp-action="FormService" asp-controller="Home" asp-route-idService="@item.IDService" class="btn btn-primary btn-sm">Edit</a>
+                            <a asp-action="DeleteService" asp-controller="Home" asp-route-idService="@item.IDService" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

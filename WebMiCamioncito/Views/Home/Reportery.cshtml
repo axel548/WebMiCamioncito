@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Services</h1>
+
+<div class="card col-12">
+    <div class="card-header">
+        Retrieve a reportery
+    </div>
+    <div class="card-body">
+
+        <form asp-action="GetReportery" asp-controller="Home" method="post">
+
+            <div class="d-inline-block col-3">
+                <label for="startdate"> Start Date</label>
+                <input class="form-control" type="date" name="startdate" />
+            </div>
+
+            <div class="d-inline-block col-3">
+                <label for="enddate"> End Date</label>
+                <input class="form-control" type="date" name="enddate" />
+            </div>
+
+            <div class="d-inline-block col-2 mt-2">
+                <button type="submit" class="btn btn-success btn-sm">Retrieve</button>
+                <a asp-action="Home" asp-controller="Home" class="btn btn-warning btn-sm">Volver a lista</a>
+            </div>
+        </form>
+    </div>
+</div>

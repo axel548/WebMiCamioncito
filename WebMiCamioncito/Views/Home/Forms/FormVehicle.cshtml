@@ -1,0 +1,55 @@
+﻿@using MiCamioncito.Models
+@model Vehicle
+
+@{
+    ViewData["Title"] = "Form Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        @ViewBag.Accion
+    </div>
+    <div class="card-body">
+
+        <form asp-action="SaveVehicle" asp-controller="Home" method="post">
+
+            <input type="hidden" asp-for="IDVehicle" />
+
+            <div class="mb-2">
+                <label class="form-label">Capacity Cubic Meters</label>
+                <input type="text" class="form-control form-control-sm" asp-for="CapacityCubicMeters" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Fuel Consumption Per Km</label>
+                <input type="text" class="form-control form-control-sm" asp-for="FuelConsumptionPerKm" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Available Distance Km</label>
+                <input type="text" class="form-control form-control-sm" asp-for="AvailableDistanceKm" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Availability Start Date</label>
+                <input type="date" class="form-control form-control-sm" asp-for="AvailabilityStartDate" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Availability End Date</label>
+                <input type="date" class="form-control form-control-sm" asp-for="AvailabilityEndDate" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Depreciation Cost Per Km</label>
+                <input type="text" class="form-control form-control-sm" asp-for="DepreciationCostPerKm" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Cargo Type</label>
+                <input type="text" class="form-control form-control-sm" asp-for="CargoType" />
+            </div>
+
+            <button type="submit" class="btn btn-success btn-sm">Save</button>
+            <a asp-action="Pilots" asp-controller="Home" class="btn btn-warning btn-sm">Volver a lista</a>
+        </form>
+       
+    </div>
+
+</div>

@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Vehicles</h1>
+
+<div class="card">
+    <div class="card-header">
+        List Vehicles
+    </div>
+    <div class="card-body">
+        <a asp-action="FormVehicle" asp-controller="Home" asp-route-idVehicle="0" class="btn btn-success btn-sm">New Vehicle</a>
+        <hr />
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th>Capacity Cubic Meters</th>
+                    <th>Fuel Consumption PerKm</th>
+                    <th>Available Distance Km</th>
+                    <th>Availability Start Date</th>
+                    <th>Availability End Date</th>
+                    <th>Depreciation Cost Per Km</th>
+                    <th>Cargo Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.IDVehicle</td>
+                        <td>@item.CapacityCubicMeters</td>
+                        <td>@item.FuelConsumptionPerKm</td>
+                        <td>@item.AvailableDistanceKm</td>
+                        <td>@DateTime.Parse(item.AvailabilityStartDate).ToString("dd-MM-yyyy")</td>
+                        <td>@DateTime.Parse(item.AvailabilityEndDate).ToString("dd-MM-yyyy")</td>
+                        <td>@item.DepreciationCostPerKm</td>
+                        <td>@item.CargoType</td>
+                        <td>
+                            <a asp-action="FormVehicle" asp-controller="Home" asp-route-idVehicle="@item.IDVehicle" class="btn btn-primary btn-sm">Edit</a>
+                            <a asp-action="DeleteVehicle" asp-controller="Home" asp-route-idVehicle="@item.IDVehicle" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

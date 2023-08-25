@@ -1,0 +1,51 @@
+﻿@using MiCamioncito.Models
+@model Service
+
+@{
+    ViewData["Title"] = "Form Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        @ViewBag.Accion
+    </div>
+    <div class="card-body">
+
+        <form asp-action="SaveService" asp-controller="Home" method="post">
+
+            <input type="hidden" asp-for="IDService" />
+
+
+            <div class="mb-2">
+                <label class="form-label">ID Vehicle</label>
+                <input type="text" class="form-control form-control-sm" asp-for="IDVehicle" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">ID Pilot</label>
+                <input type="text" class="form-control form-control-sm" asp-for="IDPilot" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">ID Client</label>
+                <input type="text" class="form-control form-control-sm" asp-for="IDClient" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Service Date</label>
+                <input type="date" class="form-control form-control-sm" asp-for="ServiceDate" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">DeliveryDate</label>
+                <input type="date" class="form-control form-control-sm" asp-for="DeliveryDate" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">TotalCost</label>
+                <input type="text" class="form-control form-control-sm" asp-for="TotalCost" />
+            </div>
+
+            <button type="submit" class="btn btn-success btn-sm">Save</button>
+            <a asp-action="Services" asp-controller="Home" class="btn btn-warning btn-sm">Volver a lista</a>
+        </form>
+       
+    </div>
+
+</div>
